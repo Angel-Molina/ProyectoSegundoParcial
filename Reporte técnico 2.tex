@@ -1,0 +1,207 @@
+
+
+\title{INSTITUTO TECNOLÓGICO Y DE ESTUDIOS SUPERIORES DE MONTERREY
+\\Campus Puebla\\
+Proyecto segundo parcial\\
+Métodos Numéricos\\
+Adolfo Centeno Tellez  }
+\author{Angel Molina Segura
+        \\
+                Ingeniería de Diseño Automotriz\\
+       A01732862\\
+        \and
+Eduardo Flores Mendoza
+\\Ingeniería Mecatrónica\\
+A01732776\\
+        \and
+Leonel Grande Ramírez
+\\Ingeniería Mecatrónica\\
+A01733174\\
+ \and
+Oscar Francisco Lopez Carrasco 
+\\Ingeniería en Sistemas Digitales y Robótica \\
+A01732691\\
+            \and
+Eric Zair Hernández Pérez
+\\Ingeniería Civil \\
+A01275138\\
+}
+\date{\today}
+
+\documentclass[12pt]{article}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb,amsfonts,latexsym,cancel}
+
+\begin{document}
+\maketitle
+
+
+
+\section{Introducción}
+Sabemos que las ecuaciones lineales se encuentran en distintos ámbitos de la ingeniería, así como en otras ramas de estudio, por lo tanto para la realización de este proyecto se estudiaron diversas propuestas de las diferentes disciplinas donde se pueden encontrar ecuaciones diferenciales. Entre ellas, se puede estudiar modelos económicos, probabilidades de ciertas circunstancias, problemas en circuitos eléctricos y electrónica.
+
+Siendo el último, el cual se estudiará en este proyecto, debido a que es la más viable para la realización de la aplicación de los métodos vistos anteriormente en clase en un problema al que nos enfrentamos en nuestra vida diaria.
+
+Durante este proyecto se verá un problema basado en el teorema de superposición, el cual vamos a resolver por dos métodos: 
+
+\section{Métodos y teoremas}
+\paragraph{Crammer:} 
+
+Consiste en resolver un sistema de ecuaciones lineales, en las cuales, se debe de tener el mismo número de ecuaciones que de incógnitas para lograr despejarlas, el determinante de la matriz debe ser diferente de cero y por último, las ecuaciones deben estar separadas de tal manera que que las incógnitas queden en columnas a la izquierda del signo igual y los términos independiente a la derecha. 
+
+\paragraph{Gauss Seidel:} 
+Consiste en hacer iteraciones, a partir de un vector inicial, para encontrar los valores de las incógnitas hasta llegar a una tolerancia deseada, la diferencia radica en que cada vez que se desee encontrar un nuevo valor de una $x_i$, además de usar los valores anteriores de las $x$
+
+\paragraph{Jacobi:} 
+La base del método consiste en construir una sucesión convergente definida iterativamente. El límite de esta sucesión es precisamente la solución del sistema. A efectos prácticos si el algoritmo se detiene después de un número finito de pasos se llega a una aproximación al valor de $x$ de la solución del sistema.
+
+\paragraph{Teorema de Superposición:} 
+El teorema de superposición establece que:
+En un circuito lineal con varias fuentes, la corriente y el voltaje para cualquier elemento en el circuito es la suma de las corrientes y voltajes producidos por cada fuente que actúa de manera independiente.
+
+\paragraph{Consiste en:} 
+En el cálculo de la contribución que tiene cada fuente de manera independiente dentro del circuito, es decir, se calculará por separado la contribución de cada fuente en un circuito con distintas fuentes de voltaje o corriente. Estas, se eliminarán haciendo un circuito abierto en una fuente de corriente o un corto en una fuente de voltaje.
+
+\paragraph{Tiene ecuaciones lineales:}
+En la suma algebraica de las contribuciones de cada fuente del circuito. El cual será el resultado de un proceso anterior de cálculo.
+
+\section{Propósito}\label{previous work}
+Este proyecto se hace con el propósito de utilizar los métodos vistos durante el parcial de manera práctica, es decir, se busca que al menos uno de los métodos se utilice para resolver un problema en la vida real, logrando así poder reafirmar los conocimientos de cómo pueden ser llevados a cabo en la vida real los métodos.
+Por otra parte el trabajo en equipo, sirve para que se organicen los alumnos de manera que se llegue a un trabajo exitoso, sinérgico y con un buen resultado.
+ 
+
+\section{Desarrollo}\label{results}
+
+\begin{figure}[hbtp]
+\caption{Problema a resolver}
+\centering
+\includegraphics[width=5.9cm]{Proyecto2.PNG}
+\end{figure}
+\subsection*{Descripción del problema a resolver}
+\paragraph{}En este problema se nos presenta un circuito, en el cual a partir del teorema de superposición se encuentre el voltaje $V_{0}$ en la resistencia de 1kΩ.
+Este principio o teorema es muy útil para analizar circuitos, ya que es otro nombre para la  propiedad aditiva de la linealidad:
+\[ 
+f(x_{1}+x_{2})=f(x_{1})+f(x_{2})
+\]
+Ya que la linealidad es la propiedad de un elemento de describe un comportamiento lineal entre causa y efecto.\\ \\Por lo tanto para resolver dicho problema se debe seguir una serie de cuatro pasos: 
+\subsubsection*{Paso 1}
+Se deben ir apagando las fuentes independientes excepto una; para así encontrar una salida de voltaje (voltaje o corriente),aplicando ya sea análisis nodal o análisis de mallas. 
+Para apagar una fuente de voltaje se debe reemplazar por un cortocircuito, o cable. De la siguiente manera:
+\begin{figure}[hbtp]
+\caption{Diagrama de fuente de voltaje}
+\centering
+\includegraphics[scale=1]{proye2.PNG}
+\end{figure}
+\\Se hace cable  para que de esa manera para que V=0.
+\\ \\ Para apagar una fuente de corriente se debe de reemplazar por un circuito abierto. 
+\begin{figure}[hbtp]
+\caption{Remplazamiento por circuito abierto.}
+\centering
+\includegraphics[scale=1]{proy2.PNG}
+\end{figure}
+Se hace un circuito abierto porque de manera i=0 de la siguiente manera:
+\\
+\subsubsection*{Paso 2}
+En este teorema no se deben apagar fuentes dependientes ya sea de corriente o de voltaje.
+\subsubsection*{Paso 3}
+Repetir el paso 1 para cada fuente.
+\subsubsection*{Paso 4}
+Encontrar la contribución total mediante la suma algebraica de todas las contribuciones de las fuentes independientes.
+\\ \\Al ir apagando cada fuente se irán obteniendo diversos sistemas de ecuaciones lineales, por lo cual aplicaremos los métodos de Crammer, Gauss Seidel y Jacobi.\\ 
+
+De tal manera que al conseguir los sistemas de ecuaciones lineales de las corrientes en ($V_0'$) y ($V_0''$) que interaccionan con otras mallas; se tendrán que realizar dos veces un sistema de ecuaciones para cada sistema de $V_0$. De tal manera que se recurre a usar el método de cramer para encontrar el valor respectivo de cada corriente, cabe destacar que también se usarán los métodos anteriormente mencionados para tener una comprobación exacta del valor de las corrientes.
+\\ \\ \\ 
+A continuación se muestran los dos sistemas de ecuaciones:
+\\ \\
+Sistema de ecuaciones 1 ($V_0'$) .
+
+\begin{eqnarray}
+I_{3} - I_{4} = 2mA\\
+5I_{1} - 2I_{2} - 2I_{4} = 0\\
+-2I_{1} + 4I_{2} - I_{3} = 0\\
+-2I_{1} - I_{2} + 2I_{3} + 2I_{4} = 0
+\end{eqnarray}
+\begin{figure}[hbtp]
+\caption{Diagrama 1}
+\centering
+\includegraphics[width=3.7cm]{elc1.PNG}
+\end{figure}
+\\
+Sistema de ecuaciones 2 ($V_0''$).
+\begin{eqnarray}
+5I_{1} - 2I_{2} - 2I_{3} = 0\\
+-2I_{1} - 4I_{2} - I_{3} = 0\\
+-2I_{1} - I_{2} + 4I_{3} = 12mA
+\end{eqnarray}
+\begin{figure}[hbtp]
+\caption{Diagrama 2}
+\centering
+\includegraphics[width=3.7cm]{elc2.PNG}
+\end{figure}
+
+Al tener los dos sistemas de ecuaciones, se recurre a realizar el primer sistema por medio del método de Crammer de 4x4 para obtener los valores de cada corriente, de su respectiva malla.
+
+\begin{figure}[hbtp]
+\caption{Método de Crammer}
+\centering
+\includegraphics[width=11cm]{exel.PNG}
+\end{figure}
+No obstante se prosigue a obtener los siguientes valores de las corrientes del segundo sistema de ecuaciones, para así obtener el valor de $V_0''$.
+\begin{figure}[hbtp]
+\caption{Valores de las corrientes}
+\centering
+\includegraphics[width=6cm]{excel1.PNG}
+\end{figure}\\
+Para poder comprobar los resultados del valor de cada corriente, se recurrió al uso de otros dos métodos.\\
+
+Para la solución del sistema de ecuaciones 4x4 se usó el método Gauss Seidel, y se recurrió a este porque al solucionarlo con el método de Jacobi en el código de MatLab decía que no es una matriz diagonal dominante.
+\begin{figure}[hbtp]
+\caption{Método de Gauss Seidel}
+\centering
+\includegraphics[scale=1]{sei.PNG}
+\end{figure}
+
+
+Y para la solución del segundo sistema de ecuaciones de 3x3 se usó el Método de Jacobi, ya que este decía que era una matriz diagonal dominante en el código de MatLab. De esta manera se pudo comprobar que los valores de cada corriente eran correctas.
+\begin{figure}[hbtp]
+\caption{Método de Jacobi}
+\centering
+\includegraphics[width=13cm]{new.PNG}
+\end{figure}
+\\
+Cabe mencionar que el valor de las corrientes que da el excel están en miliamperios, ya que al buscar los valores de $V_0'$ y $V_0''$ se usará la Ley de Ohm.
+Aunque el circuito nos demuestra que en la parte de buscar su voltaje señalado, nos da el valor de la resistencia desde un principio, con un valor de 1k ohm.
+\\ \\
+Entonces: \\
+$V=I*R$\\
+$V_0'=(0.685mA)(1k)=0.685v$\\
+$V_0''=(5.485mA)(1k)=5.485v$
+\\ \\
+Al tener los valores de $V_0'$ y $V_0''$, se suman ambas para así obtener el valor final de $V_0$.\\ \\
+$V_0 = V_0' + V_0''$\\
+$V_0 = 0.685v + 5.485v = 6.171v$
+\\ \\
+Teniendo en cuenta estos valores dados por medio de las dos ecuaciones lineales, para obtener los valores de las corrientes de las mallas que se produjeron en el circuito y el resultado de $V_0$, se recurrió a comprobarlo en el código de MatLab.
+Y como resultado, MatLab generó el mismo resultado igual al resultado generado por excel.
+\begin{figure}[hbtp]
+\caption{Resultados en Matlab}
+\centering
+\includegraphics[scale=1]{ult.PNG}
+\end{figure}
+\\ \\
+
+\section{Conclusión}\label{conclusions}
+Se puede deducir que, gracias a los sistemas matrices, se pueden solucionar los sistemas de ecuaciones lineales grandes o pequeñas, y así poder encontrar los datos que nosotros queremos encontrar, u obtener los valores de ciertas variables de una ecuación, como es en el caso de este problema. Para encontrar los valores de ciertas corrientes, se utilizó el método de Crammer y para rectificar las respuestas, también se recurrió a los métodos de Gauss Seidel y Jacobi, ya que para la solución de este se desarrollaron dos sistemas de ecuaciones, uno de 3x3 y otro de 4x4.
+
+\begin{thebibliography}{1}
+\bibitem{McAllister}McAllister, W. (2006). Superposición. Octubre 25, 2020, de Khan Academy Sitio web: https://es.khanacademy.org/science/electrical-engineering/ee-circuit-analysis-topic/ee-dc-circuit-analysis/a/ee-superposition
+\bibitem{Designsoft}Designsoft. (2020). Teorema de la Superposición. 2020, de Desing Soft .Inc Sitio web: https://www.tina.com/es/superposition-theorem/
+TutoriasOnline. (2020). Metodo de Crammer. 2020, de TutoriasOnline Sitio web: https://miprofe.com/metodo-de-cramer-para-ecuaciones-lineales
+\end{thebibliography}
+
+
+\bibliographystyle{abbrv}
+\bibliography{main}
+
+\end{document}
